@@ -1,0 +1,32 @@
+<html>
+<header><title>Idunn's program</title></header>
+<body>
+
+	<form action="/handle_main" method="POST" enctype="multipart/form-data">
+		Select file to sort:
+		<input type="file" name="fileToUpload" id="fileToUpload">
+		<input type="submit" value="Sort file!" name="submit">
+	</form>
+
+	<form action="/handle_main", method="POST">
+
+		<select name="value">
+			<option value="min" {% if value == "min" %} selected {% endif %}>Smallest value</option>
+			
+			<option value="med" {% if value == "med" %} selected {% endif %}>Medium value</option>
+			
+			<option value="max" {% if value == "max" %} selected {% endif %}>Highest value</option>
+		</select>
+
+
+		<!--<button type="submit">Generate file</button>-->
+	</form>
+
+	<output type="file" id="xxmyFile" src="/computed_data/output.kof">
+
+	<a href="/static/output.kof" download>
+		<img src="/static/downloadgoat.jpg" alt="Download" width="600" height="400">
+	</a>
+
+</body>
+</html>
