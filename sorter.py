@@ -1,9 +1,9 @@
 import os
 import sys
 
-def sort(value = "min", file = None):
-	print(file)
-	file = open("static/"+file, "r+")
+def sort(value = "min", file_name = None):
+	#print(file)
+	file = open("static/"+file_name, "r+")
 	file_list = []
 	for line in file:
 		temp = line.split()
@@ -23,6 +23,7 @@ def sort(value = "min", file = None):
 	file.close()
 
 	for key in name_dict:
+		print(key)
 		z0 = name_dict[key][0][5]
 		z1 = name_dict[key][1][5]
 		z2 = name_dict[key][2][5]
@@ -45,7 +46,7 @@ def sort(value = "min", file = None):
 			if "max" not in name_dict[key][i] and "min" not in name_dict[key][i]:
 				name_dict[key][i].append("med")
 
-	outfile = open("static/output{}.kof".format(sys.argv[1]), "w+", encoding="utf-8")
+	outfile = open("static/"+file_name+"_{}.kof".format(value), "w+", encoding="utf-8")
 	for key in name_dict:
 		for i in range(3):
 			if value in name_dict[key][i]:
@@ -63,4 +64,6 @@ def sort(value = "min", file = None):
 				outfile.write(string)
 
 if __name__=="__main__":
-	sort(sys.argv[1], "f_dren_G_KOF-kummer-revD (2).KOF")
+	# This repeats sorting all three 3 times, lol. It's fine though
+	for i in ["min", "med", "max"]:
+		sort(i, sys.argv[1])
